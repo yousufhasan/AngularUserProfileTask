@@ -1,0 +1,12 @@
+{
+  "name": "Rice Warner User Profile",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "^1.4.0",
+    "angular-resource": "^1.4.0",
+    "jquery": ">=2.1.1",
+    "font-awesome": "~4.6.3",
+    "bootstrap": "^3.3.6"
+  },
+  "moduleName": "userProfileApp"
+}

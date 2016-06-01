@@ -1,0 +1,102 @@
+<html ng-app="userProfileApp">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Display User Profile </title>
+</head>
+
+<body ng-controller="userProfileCtrl as profile">
+    <div class="fa fa-spinner fa-spin fa-5" ng-show="profile.showLoader"></div>
+    <header class="col-md-12 col-xs-12" ng-class="{'nav-expanded': profile.showMenu}" ng-hide="profile.showLoader">
+        <a id="nav-expander" class="nav-expander fixed" ng-click="profile.showFilters()">
+            <i class="fa fa-bars fa-lg white"></i>
+        </a>
+    </header>
+    <nav ng-class="{'nav-expanded': profile.showMenu}" ng-hide="profile.showLoader">
+        <ul class="usersList">
+            <input class="form-control textbox" placeholder="Filter Users Here." ng-model="profile.txtUser" />
+            <li class="listItem" ng-class="{'listItemSelected': user.id==profile.selectedProfile.id}" ng-click="profile.showDetails(user.id)" ng-repeat="user in profile.userProfiles | filter: profile.txtUser">
+                <span class="userText">{{user.name}}</span>
+            </li>
+        </ul>
+    </nav>
+    <div class="col-md-12 col-xs-12" ng-show="!profile.showLoader">
+        <div class="container details" ng-class="{showDetails: profile.showLoader == false }">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5>User Profile Details</h5></div>
+                <div class="panel-body form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">Name</label>
+                        <div class="col-md-9 col-xs-9">
+                            {{profile.selectedProfile.name}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">UserName</label>
+                        <div class="col-md-9 col-xs-9">
+                            {{profile.selectedProfile.username}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">Email</label>
+                        <div class="col-md-9 col-xs-9">
+                            {{profile.selectedProfile.email}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">Address</label>
+                        <div class="col-md-9 col-xs-9">
+                            {{profile.selectedProfile.address.suite}} , {{profile.selectedProfile.address.street}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">City</label>
+                        <div class="col-md-9 col-xs-9">
+                            {{profile.selectedProfile.address.city}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">Phone</label>
+                        <div class="col-md-9 col-xs-9">
+                            {{profile.selectedProfile.phone}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">Zip Code</label>
+                        <div class="col-md-9 col-xs-9">
+                            {{profile.selectedProfile.address.zipcode}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">Company</label>
+                        <div class="col-md-9 col-xs-9">
+                            {{profile.selectedProfile.company.name}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">WebSite</label>
+                        <div class="col-md-9 col-xs-9">
+                            {{profile.selectedProfile.website}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <link rel="stylesheet" href="build/css/main.min.css" />
+    <link rel="stylesheet" media="(max-width: 768px)" href="css/small.css" />
+    <script type="text/javascript" src="build/js/main.min.js"></script>
+</body>
+
+</html>
